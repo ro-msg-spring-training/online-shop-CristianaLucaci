@@ -15,16 +15,22 @@
 	<description>The application will deal with the management and daily functioning of a small online shop</description>
 	<properties>
 		<java.version>11</java.version>
+		<flyway.user></flyway.user>
+		<flyway.password></flyway.password>
+		<flyway.schemas>shop-db</flyway.schemas>
+		<flyway.url>jdbc:h2:~/Documents/h2/shop;DB_CLOSE_ON_EXIT=FALSE</flyway.url>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -70,6 +76,10 @@
 							</exclude>
 						</excludes>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-maven-plugin</artifactId>
 				</plugin>
 			</plugins>
 		</pluginManagement>
