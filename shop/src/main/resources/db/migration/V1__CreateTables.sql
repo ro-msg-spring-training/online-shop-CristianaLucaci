@@ -6,12 +6,12 @@ create table ProductCategory_t (
 
 create table Supplier_t (
     ID int not null auto_increment primary key,
-    name varchar(100)
+    name varchar(100) not null
 );
 
 create table Product_t (
     ID int not null auto_increment primary key,
-    name varchar(100),
+    name varchar(100) not null,
     description varchar(100);
     price decimal(19,2);
     weight double,
@@ -23,10 +23,10 @@ create table Product_t (
 create table if not exists Location_t(
     ID  int not null auto_increment primary key,
     name varchar(100) not null,
-    addressCountry varchar(100),
-    addressCity varchar(100),
-    addressCounty varchar(100),
-    addressStreetAddress varchar(100)
+    addressCountry varchar(100) not null,
+    addressCity varchar(100) not null,
+    addressCounty varchar(100) not null,
+    addressStreetAddress varchar(100) not null
 );
 
 create table Stock_t (
@@ -47,7 +47,7 @@ create table if not exists Customer_t(
 
 create table if not exists Order_t (
     ID int not null auto_increment primary key,
-    shippedFrom int NOT NULL,
+    shippedFrom int,
     customer int NOT NULL,
     createdAt timestamp,
     addressCountry varchar(100),

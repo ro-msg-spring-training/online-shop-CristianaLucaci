@@ -7,26 +7,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Embeddable
 @Data
-@Table(name = "OrderDetail_t")
-public class OrderDetail implements Serializable{
+public class OrderDetailID implements Serializable {
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OrderID")
-    private Order order;
+    private int order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID")
-    private Product product; */
-
-    @EmbeddedId
-    private OrderDetailID id;
-
-    @Column(name = "quantity")
-    private int quantity;
-
+    private int product;
 }
-
