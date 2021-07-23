@@ -14,13 +14,13 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Customer_t")
+@Table(name = "Customer")
 public class Customer extends BaseEntity<Integer>{
 
-    @Column(name = "firstname", nullable = false)
+    @Column(name = "first_name", nullable = false) //name=first_name
     private String firstName;
 
-    @Column(name = "lastname", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "username", nullable = false)
@@ -29,7 +29,7 @@ public class Customer extends BaseEntity<Integer>{
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "emailaddress", nullable = false)
+    @Column(name = "email_address", nullable = false)
     private String emailAddress;
 
     @Override

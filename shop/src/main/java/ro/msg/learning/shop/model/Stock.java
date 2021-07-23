@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,8 +13,13 @@ import java.io.Serializable;
 @Data
 @Table(name = "Stock_t")
 public class Stock implements Serializable {
-    @EmbeddedId
-    private StockID stockID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_ID")
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_ID")
+    private Location location;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;

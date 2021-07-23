@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Product_t")
+@Table(name = "Product")
 public class ProductCategory extends BaseEntity<Integer> {
     @Column(name = "name", nullable = false)
     private String name;

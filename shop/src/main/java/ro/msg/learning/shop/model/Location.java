@@ -14,20 +14,20 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Location_t")
+@Table(name = "Location")
 public class Location extends BaseEntity<Integer>{
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "addressCountry", nullable = false)
+    @Column(name = "address_country", nullable = false)
     private String addressCountry;
 
-    @Column(name = "addressCity", nullable = false)
+    @Column(name = "address_city", nullable = false)
     private String addressCity;
 
-    @Column(name = "addressCounty", nullable = false)
+    @Column(name = "address_county", nullable = false)
     private String addressCounty;
 
-    @Column(name = "addressStreetAddress", nullable = false)
-    private String adressStreetAdress;
+    @Column(name = "street_address", nullable = false)
+    private String streetAddress;
 }

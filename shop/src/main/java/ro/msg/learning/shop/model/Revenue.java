@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Revenue_t")
+@Table(name = "Revenue")
 public class Revenue extends BaseEntity<Integer>{
 
     @ManyToOne(fetch = FetchType.LAZY)

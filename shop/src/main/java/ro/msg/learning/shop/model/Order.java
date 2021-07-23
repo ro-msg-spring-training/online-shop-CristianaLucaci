@@ -19,26 +19,26 @@ public class Order extends BaseEntity<Integer>{
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "LocationID")
-    @Column(name = "shippedFrom")
+    @Column(name = "shipped_from")
     private Location shippedFrom;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @Column(name = "customer")
     private Customer customer;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "addressCountry", nullable = false)
+    @Column(name = "address_country", nullable = false)
     private String addressCountry;
 
-    @Column(name = "addressCity", nullable = false)
+    @Column(name = "address_city", nullable = false)
     private String addressCity;
 
-    @Column(name = "addressCounty", nullable = false)
+    @Column(name = "address_county", nullable = false)
     private String addressCounty;
 
-    @Column(name = "addressStreetAddress", nullable = false)
-    private String adressStreetAdress;
+    @Column(name = "street_address", nullable = false)
+    private String streetAddress;
 
 }

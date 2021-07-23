@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "Product_t")
+@Table(name = "Product")
 public class Product extends BaseEntity<Integer>{
 
     @Column(name = "name", nullable = false)
@@ -29,11 +29,11 @@ public class Product extends BaseEntity<Integer>{
     private double weight;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ProductCategoryID")
+    @JoinColumn(name = "product_category_ID")
     private ProductCategory category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SupplierID")
+    @JoinColumn(name = "supplier_ID")
     private Supplier supplier;
 
     @Column(name = "image_url")

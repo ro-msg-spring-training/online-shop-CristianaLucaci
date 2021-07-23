@@ -11,19 +11,16 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "OrderDetail_t")
+@Table(name = "OrderDetail")
 public class OrderDetail implements Serializable{
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OrderID")
-    private Order order;
+    private int order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID")
-    private Product product; */
-
-    @EmbeddedId
-    private OrderDetailID id;
+    private int product;
 
     @Column(name = "quantity")
     private int quantity;

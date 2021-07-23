@@ -11,11 +11,12 @@ import java.io.Serializable;
 //containing just the primary key
 @MappedSuperclass
 @Data
+
 public abstract class BaseEntity <I extends Serializable> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private I id;
+    protected I id;
 
     @Override
     public String toString(){
