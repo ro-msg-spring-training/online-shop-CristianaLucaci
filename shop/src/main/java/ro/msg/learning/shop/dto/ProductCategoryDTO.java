@@ -1,12 +1,13 @@
 package ro.msg.learning.shop.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
-public class ProductCategoryDTO {
-    private int id;
-    private String name;
-    private String description;
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@Builder
+public class ProductCategoryDTO extends BaseDTO{
+    String name;
+    String description;
 }

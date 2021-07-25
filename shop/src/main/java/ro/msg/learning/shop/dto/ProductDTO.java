@@ -1,42 +1,34 @@
 package ro.msg.learning.shop.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import ro.msg.learning.shop.model.Product;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Builder
-public class ProductDTO {
-    private int productID;
+public class ProductDTO extends BaseDTO{
+
     private String name;
     private String description;
     private BigDecimal price;
     private Double weight;
     private int categoryID;
     private String categoryName;
-    private String categoryDescription;
     private int supplierID;
     private String imageUrl;
 
-    public static ProductDTO toDTO(Product product) {
-
-        return ProductDTO.builder()
-                .name(product.getName())
-                .description(product.getDescription())
-                .price(product.getPrice())
-                .weight(product.getWeight())
-                .categoryID(product.getCategory().getId())
-                .categoryName(product.getCategory().getName())
-                .categoryDescription(product.getCategory().getDescription())
-                .imageUrl(product.getImageUrl())
-                .supplierID(product.getSupplier().getId())
-                .build();
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", weight=" + weight +
+                ", category=" + categoryName +
+                '}';
     }
 
 }
