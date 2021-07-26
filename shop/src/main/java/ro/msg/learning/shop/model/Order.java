@@ -1,9 +1,6 @@
 package ro.msg.learning.shop.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "Order_t")
+@Builder
 public class Order extends BaseEntity<Integer>{
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

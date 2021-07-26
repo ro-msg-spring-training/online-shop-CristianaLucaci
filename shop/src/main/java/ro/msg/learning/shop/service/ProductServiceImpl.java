@@ -2,11 +2,14 @@ package ro.msg.learning.shop.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ro.msg.learning.shop.exception.ProductCategoryNotFoundException;
+import ro.msg.learning.shop.exception.ProductNotFoundException;
 import ro.msg.learning.shop.model.Product;
-import ro.msg.learning.shop.dto.ProductDTO;
+import ro.msg.learning.shop.model.ProductCategory;
 import ro.msg.learning.shop.repository.ProductCategoryRepository;
 import ro.msg.learning.shop.repository.ProductRepository;
-import ro.msg.learning.shop.repository.SupplierRepository;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -14,35 +17,49 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
-    private final SupplierRepository supplierRepository;
-
-
 
     @Override
-    public Product createProduct(ProductDTO product) {
-        return null;
+    public Product createProduct(Product product, Integer productCategoryID) {
+        ProductCategory productCategory = productCategoryRepository.findById(productCategoryID)
+                .orElseThrow(() -> new ProductCategoryNotFoundException(productCategoryID));
+
+        product.setCategory(productCategory);
+        return productRepository.save(product);
     }
 
     @Override
-    public Product updateProduct(int id, ProductDTO product) {
-        return null;
+    public Product updateProduct(int id, Product product) {
+        Product updatedProduct = productRepository.findById(id)
+                .map(oldProduct -> {
+                    oldProduct.setName(product.getName());
+                    oldProduct.setDescription(product.getDescription());
+                    oldProduct.setPrice(product.getPrice());
+                    oldProduct.setWeight(product.getWeight());
+                    oldProduct.setCategory(product.getCategory());
+                    oldProduct.setSupplier(product.getSupplier());
+                    oldProduct.setImageUrl(product.getImageUrl());
+                    return oldProduct;
+                })
+                .orElseThrow(() -> new ProductNotFoundException(id));
+
+        return productRepository.save(updatedProduct);
     }
 
     @Override
-    public Product deleteProduct(int id) {
-        return null;
+    public void deleteProduct(int id) {
+        productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
+        productRepository.deleteById(id);
     }
 
     @Override
     public Product getProduct(int id) {
-
-        return null;
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
-   /* private Collection<ProductDTO> getProducts() {
-        return  productRepository.findAll().stream()
-                .map(ProductDTO::toProduct)
-                .toList();
-    }*/
-
+    @Override
+    public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
 }

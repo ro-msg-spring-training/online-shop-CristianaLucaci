@@ -2,8 +2,8 @@ package ro.msg.learning.shop.dto;
 
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,13 +21,24 @@ public class OrderDTO extends BaseDTO{
 
     private LocalDateTime createdAt;
 
-    private String countryAddress;
+    private String addressCountry;
 
-    private String cityAddress;
+    private String addressCity;
 
-    private String countyAddress;
+    private String addressCounty;
 
     private String streetAddress;
+
+    private List<StockDTO> products;
+
+    public static Integer getQuantityById(List<StockDTO> orderProducts, Integer productId) {
+        for (StockDTO op: orderProducts) {
+            if (op.getProduct() == productId) {
+                return op.getQuantity();
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString() {
@@ -35,9 +46,9 @@ public class OrderDTO extends BaseDTO{
                 "shippedFrom=" + locationName +
                 ", customer=" + locationId +
                 ", createdAt=" + createdAt +
-                ", country='" + countryAddress + '\'' +
-                ", city='" + cityAddress + '\'' +
-                ", county='" + countyAddress + '\'' +
+                ", country='" + addressCountry + '\'' +
+                ", city='" + addressCity + '\'' +
+                ", county='" + addressCounty + '\'' +
                 ", streetAddress='" + streetAddress + '\'' +
                 '}';
     }

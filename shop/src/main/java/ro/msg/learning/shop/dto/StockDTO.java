@@ -9,9 +9,9 @@ import lombok.*;
 @Builder
 public class StockDTO extends BaseDTO{
 
-    String product;
+    int product;
 
-    String location;
+    int location;
 
     private int quantity;
 

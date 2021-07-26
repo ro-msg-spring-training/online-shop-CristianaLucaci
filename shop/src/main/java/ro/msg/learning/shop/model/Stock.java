@@ -13,6 +13,11 @@ import java.io.Serializable;
 @Data
 @Table(name = "Stock_t")
 public class Stock implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_ID")
     private Product product;
